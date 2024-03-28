@@ -6,7 +6,11 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://task-management-server-cdv1yc3af.vercel.app",
+  })
+);
 
 const uri = process.env.DATABASE_URI;
 const client = new MongoClient(uri, {
