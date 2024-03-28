@@ -6,13 +6,10 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: "https://task-management-server-cdv1yc3af.vercel.app",
-  })
-);
+app.use(cors());
 
-const uri = process.env.DATABASE_URI;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.e5zetpl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
