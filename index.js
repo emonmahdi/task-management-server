@@ -20,7 +20,10 @@ app.use(express.json());
 // });
 
 const corsOptions = {
-  origin: ["http://localhost:3000"],
+  origin: [
+    "http://localhost:3000",
+    "https://6607cff4b604847e157126d6--gregarious-sunburst-9204ed.netlify.app",
+  ],
 };
 
 app.use(cors(corsOptions));
