@@ -48,21 +48,15 @@ async function run() {
       res.send("Task Master Server");
     });
 
-    app.get(
-      "/tasks",
-      {
-        mode: "no-cors",
-      },
-      async (req, res) => {
-        try {
-          const tasks = await tasksCollection.find({}).toArray();
-          res.json(tasks);
-        } catch (err) {
-          console.error("Error fetching tasks:", err);
-          res.status(500).json({ error: "Internal Server Error" });
-        }
+    app.get("/tasks", async (req, res) => {
+      try {
+        const tasks = await tasksCollection.find({}).toArray();
+        res.json(tasks);
+      } catch (err) {
+        console.error("Error fetching tasks:", err);
+        res.status(500).json({ error: "Internal Server Error" });
       }
-    );
+    });
 
     // find tasks filtering by email
     app.get("/tasks/:email", async (req, res) => {
